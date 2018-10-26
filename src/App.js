@@ -26,7 +26,7 @@ class App extends Component {
   textHandler(e) {
     this.setState({
       banner: e.target.value,
-    })
+    });
   }
 
   render() {
