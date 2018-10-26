@@ -5,8 +5,10 @@ import { doTest } from './redux/actions';
 class Header extends Component{
     render(){
         return(
-        <div>
+        <div onClick={this.props.doTest}>
+            <h1>Click here to finish the sentence.</h1>
             {this.props.banner}
+            {this.props.test}
         </div>
         )
     }
