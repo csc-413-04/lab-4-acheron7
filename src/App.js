@@ -59,7 +59,7 @@ class App extends Component {
           <p>
             {myVariable}
           </p>
-          <h2>Timer: {this.state.timer}</h2>
+          <h2>Live for {this.state.timer} seconds.</h2>
           
           {myBanner}
           
