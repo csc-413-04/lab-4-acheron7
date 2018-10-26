@@ -12,7 +12,9 @@ class App extends Component {
       color: 'black',
       banner: 'hello',
       isOpen: false,
+      timer: 0,
     };
+
     this.buttonHandler = this.buttonHandler.bind(this);
     this.textHandler = this.textHandler.bind(this);
   }
@@ -27,6 +29,21 @@ class App extends Component {
     this.setState({
       banner: e.target.value,
     });
+  
+  }
+
+  tick() {
+    this.setState(state => ({
+      timer: state.timer + 1
+    }));
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
@@ -42,6 +59,8 @@ class App extends Component {
           <p>
             {myVariable}
           </p>
+          <h2>Timer: {this.state.timer}</h2>
+          
           {myBanner}
           
           <input value={this.state.banner} onChange={this.textHandler}/>
@@ -52,6 +71,10 @@ class App extends Component {
   }
 }
 
+
+
+
+
 const mapStateToProps = (state, ownProps) => {
   return {
     test: state.testReducer.test,
@@ -59,6 +82,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = { doTest };
+
+
 
 export default connect(
   mapStateToProps,
